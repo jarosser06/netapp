@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Jim Rosser"]
   s.email       = "jarosser06@gmail.com"
   s.files       = %w(lib/netapp.rb lib/netapp/monkey_patches/integer.rb lib/netapp/query.rb lib/netapp/volume.rb)
-  s.homepage    = 'https://github.com/jarosser06'
+  s.homepage    = 'https://github.com/jarosser06/netapp'
 
   s.add_dependency 'snmp'
 end
