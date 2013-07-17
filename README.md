@@ -1,16 +1,8 @@
-netapp_filer_query
+NetApp
 ==================
-
 requires 'snmp'
 
-Wrapper for checking filer with snmp
-
-This should allow for querying information from netapp filer storage.
-
-Including listing all current volumes, the total allocated storage on each volume and even allow converting to human readable ie (MB, GB, TB).
-
-This should be able to list other information like current temps, failed disks, etc.
-
+Wrapper for checking filer with snmp.
 
 Get Volume Total Size in TB
 ---------------------------
