@@ -24,16 +24,16 @@ class NetApp
 
   def failed_disks?
     if failed_disks == 0
-      false 
+      false
     else
-      true 
+      true
     end
   end
 
   def failed_disks
     fetch(["1.3.6.1.4.1.789.1.6.4.7.0"]).pop.to_i
   end
-  
+
   def failed_power_supplies
     fetch(["1.3.6.1.4.1.789.1.2.4.4.0"]).pop.to_i
   end
@@ -59,18 +59,18 @@ class NetApp
       false
     else
       true
-    end 
+    end
   end
 
   def nvram_battery_status
     case fetch(["1.3.6.1.4.1.789.1.2.5.1.0"]).pop.to_i
-    when 1 
+    when 1
       "ok"
-    when 2 
+    when 2
       "partially discharged"
-    when 3 
+    when 3
       "fully discharged"
-    when 4 
+    when 4
       "not present"
     when 5
       "near end of life"
