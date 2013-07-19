@@ -7,15 +7,18 @@ require_relative 'netapp/query'
 class NetApp
   include NetApp::Query
   attr_accessor :host, :community, :options
-  def initialize(host, community = "public", options = {})
+  def initialize(host, community = 'public', options = {})
     @host = host
     @community = community
-    @options = options 
+    @options = options
   end
 
   def volume(vol)
     recieved = fetch_vol(vol)
-    NetApp::Volume.new(recieved[:name], recieved[:used], recieved[:free], recieved[:total])
+    NetApp::Volume.new(recieved[:name],
+                       recieved[:used],
+                       recieved[:free],
+                       recieved[:total])
   end
 
   def volumes
@@ -31,11 +34,11 @@ class NetApp
   end
 
   def failed_disks
-    fetch(["1.3.6.1.4.1.789.1.6.4.7.0"]).pop.to_i
+    fetch(['1.3.6.1.4.1.789.1.6.4.7.0']).pop.to_i
   end
 
   def failed_power_supplies
-    fetch(["1.3.6.1.4.1.789.1.2.4.4.0"]).pop.to_i
+    fetch(['1.3.6.1.4.1.789.1.2.4.4.0']).pop.to_i
   end
 
   def failed_power_supply?
@@ -47,15 +50,15 @@ class NetApp
   end
 
   def cache_age
-    fetch(["1.3.6.1.4.1.789.1.2.2.23.0"]).pop.to_i
+    fetch(['1.3.6.1.4.1.789.1.2.2.23.0']).pop.to_i
   end
 
   def uptime
-    fetch(["1.3.6.1.2.1.1.3.0"]).pop[/[0-9]+ days/]
+    fetch(['1.3.6.1.2.1.1.3.0']).pop[/[0-9]+ days/]
   end
 
   def over_temperature?
-    if fetch(["1.3.6.1.4.1.789.1.2.4.1.0"]).pop.to_i == 1
+    if fetch(['1.3.6.1.4.1.789.1.2.4.1.0']).pop.to_i == 1
       false
     else
       true
@@ -63,21 +66,21 @@ class NetApp
   end
 
   def nvram_battery_status
-    case fetch(["1.3.6.1.4.1.789.1.2.5.1.0"]).pop.to_i
+    case fetch(['1.3.6.1.4.1.789.1.2.5.1.0']).pop.to_i
     when 1
-      "ok"
+      'ok'
     when 2
-      "partially discharged"
+      'partially discharged'
     when 3
-      "fully discharged"
+      'fully discharged'
     when 4
-      "not present"
+      'not present'
     when 5
-      "near end of life"
+      'near end of life'
     when 6
-      "at end of life"
+      'at end of life'
     else
-      "unknown"
+      'unknown'
     end
   end
 end
