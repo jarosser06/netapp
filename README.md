@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jarosser06/netapp.png)](https://travis-ci.org/jarosser06/netapp)
+
 NetApp
 ==================
 requires 'snmp'
